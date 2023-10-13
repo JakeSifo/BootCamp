@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>HTTP Connection</title>
+<script src="/js/angular.js"></script>
+<script>
+angular.module("SimpleApp", [])
+  .controller("AssetsController", function ($scope, $http) {
+      $scope.connect = function() {
+         $http({
+            method : 'GET',
+            url : '/labs/data/assets.dat',
+            cache : false
+         }).success(function(data, status, headers, config) {
+            $scope.assetsList = data;
+         }).error(function(data, status, headers, config) {
+            alert("HTTP or data processing error with status (if any):" + status);
+         });
+      }
+   });
+</script>
+</head>
+<body ng-app="SimpleApp" ng-controller='AssetsController' style="width: 400px">
+   <h3>Assets list:</h3>
+   <ol style="font-size: 0.7em;">
+      <li ng-repeat="asset in assetsList">{{asset.assetDescription}} = {{asset.assetValue | currency}}
+   </ol>
+   <button ng-click="connect()">Fetch Data from Server</button>
+</body>
+</html>

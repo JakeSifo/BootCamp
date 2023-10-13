@@ -1,0 +1,43 @@
+import random
+
+secret_seed = 2020
+random.seed(secret_seed)
+
+# generate a sequence between 1 and 49
+low, high = 1,49
+
+sequence_len = 10
+observed_sequence = [random.randint(low, high) for i in range(sequence_len)];observed_sequence 
+
+bingo = False
+for seed in range(1984, 2021, 1):
+    random.seed(seed)
+    test_sequence = [random.randint(low, high) for i in range(sequence_len)]
+    if test_sequence == observed_sequence:
+        print (f'Bingo, the seed is {seed}')
+        bingo = True
+
+if not bingo:        
+    print ('Better luck next time...') 
+    
+    
+sequence_len  = 10000000
+some_seedy_seed = 42
+random.seed(some_seedy_seed)
+
+%time them_all = [random.randint(low, high) for i in range(sequence_len)]
+them_all [:7]
+
+
+# Q & A
+# 11
+random.seed(2020)
+winning_number = [random.randint(low, high) for i in range(sequence_len + 1)]; winning_number [-1]
+
+#6,002 digits
+len(str(2**19937-1))
+    
+
+
+
+

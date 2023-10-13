@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+<head>
+<title>AngularJS Class Directive</title>
+<script src='/js/angular.js'></script>
+
+<script>
+   angular.module("SimpleApp", [])  
+	  .controller("ColorController", function($scope) {
+		
+         $scope.isRed = false;
+         $scope.isGreen = false;
+         $scope.isBlue = false;
+
+         $scope.showItRed = function() {
+            $scope.message = 'Red hot it is!';
+            $scope.isRed = true;
+            $scope.isGreen = false;
+            $scope.isBlue = false;
+         };
+
+         this.showItGreen = function() {
+            $scope.message = 'You wanted it painted green, indeed!';
+            $scope.isRed = false;
+            $scope.isGreen = true;
+            $scope.isBlue = false;
+         };
+
+         $scope.showItBlue = function() {
+            $scope.message = 'Bad mood, eh?';
+            $scope.isRed = false;
+            $scope.isGreen = false;
+            $scope.isBlue = true;
+         };
+    });
+</script>
+<style>
+.redit {
+	background-color: red;
+}
+
+.greenit {
+	background-color: green;
+}
+
+.blueit {
+	background-color: blue;
+    color: white;
+}
+</style>
+</head>
+<body ng-app='SimpleApp' style='width:340px;'>
+    <div ng-controller='ColorController as cc'>
+        <h2 style='text-align: center;'>Demonstration of the style directives</h2>
+        <div ng-class='{redit: isRed, greenit: isGreen, blueit: isBlue}'>{{message}}</div>
+        <button ng-click='showItRed()'>Paint it red. Now!</button>
+        <button ng-click='cc.showItGreen()'>Make it green</button>
+        <button ng-click='showItBlue()'>Blue, please  ... </button>
+    </div>
+</body>
+</html>

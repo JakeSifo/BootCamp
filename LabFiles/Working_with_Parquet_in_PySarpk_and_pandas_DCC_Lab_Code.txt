@@ -1,0 +1,33 @@
+
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+!wget https://bit.ly/3dt2FOb -O /dbfs/FileStore/mock_data.json
+
+%fs ls FileStore
+
+json_file = '/FileStore/mock_data.json'
+df = spark.read.json(json_file); df.show(5)
+
+parq_file = '/FileStore/parquet_mock_data_snappy'
+df.write.parquet (parq_file, compression='snappy')
+
+%fs ls /FileStore/parquet_mock_data_snappy/
+
+parq_file = '/FileStore/parquet_mock_data_gzip'
+df.write.parquet (parq_file, compression='gzip')
+
+%fs ls /FileStore/parquet_mock_data_gzip/
+
+import pandas as pd
+parq_file_fs = '/dbfs/FileStore/parquet_mock_data_gzip/part-00000-tid-329060850168239894-e79ee76b-a5f5-4f7a-bb6c-5d5216116f4f-2579-1-c000.gz.parquet'
+df_ = pd.read_parquet(parq_file_fs)
+df_.head()
+
+
+
+
+
+
+

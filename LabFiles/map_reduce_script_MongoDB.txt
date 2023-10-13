@@ -1,0 +1,22 @@
+m = function () {
+    var currency_position;
+    if (this.ex_rate_USD < 1.0) {
+        currency_position = "Lower";
+    } 
+    if (this.ex_rate_USD > 1.0) {
+        currency_position = "Higher";
+    } 
+    if (this.ex_rate_USD == 1.0) {
+        currency_position = "On par";
+    } 
+    emit (currency_position, {number_of_currencies : 1});
+}
+
+r = function (key, values) {
+    total = 0;
+    values.forEach(function (doc) {total++;});
+    return {number_of_currencies:total};
+}
+
+res = db.fx.mapReduce(m,r, {out : "foo"})
+

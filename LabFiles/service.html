@@ -1,0 +1,33 @@
+<html ng-app='AssetsModule'>
+<head>
+<title>Modules and Dependency Injection</title>
+<script src="/js/angular.js"></script>
+<script>
+   angular.module('AssetsModule', []).factory('Assets', function() {
+      var assetsList = {};
+      assetsList.fetchAssets = function() {
+         return [ {
+            assetDescription : 'French Wine Collection',
+            assetValue : 19900
+         }, {
+            assetDescription : 'Porsche 911',
+            assetValue : 150000
+         }, {
+            assetDescription : 'Learjet',
+            assetValue : 7000000
+         } ];
+      };
+      return assetsList;
+   })
+   .controller("AssetsController", function($scope, Assets) {
+      $scope.assetsList = Assets.fetchAssets();
+   });
+</script>
+</head>
+<body ng-controller='AssetsController' style="width: 400px">
+    <h2>Wish you were here ...</h2>
+    <ol>
+        <li ng-repeat="asset in assetsList">{{asset.assetDescription}} = ${{asset.assetValue}}
+    </ol>
+</body>
+</html>

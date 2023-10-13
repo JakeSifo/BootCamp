@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>A Simple Functional Component</title>
+</head>
+
+<body>
+
+    <div id="where_to_render">********</div>
+  
+    <form name=f>
+<!--
+      <input type=text name=Greeting value="How do you do"/>
+      <input type=text name=Name value="Mr. Foobar?"/>
+-->
+      <button type=button onclick="sayIt()">Greetings !</button>
+    </form>
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    
+    <script type="text/babel">
+      function Greetings (props){
+        return <h1>{props.greeting} {props.name} </h1> 
+      }
+      
+    //  function sayIt() {
+        var reactElement = <Greetings greeting="Hiya" name="Johny" />;
+        ReactDOM.render(
+          reactElement,
+          document.getElementById('where_to_render')
+        );
+   //  }
+    </script>
+</body>
+</html>

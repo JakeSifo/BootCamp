@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="uib.progressbar">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.ico" />
+    <title>Progress Bar Demo</title>
+
+    <script src="../js/angular.js"></script>
+    <script src="../js/ui-bootstrap-tpls-0.14.3.js"></script>
+    <script src="progressBarModule.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+</head>
+
+<body class="ng-cloak">
+    <div ng-controller="ProgressBarCtrl" ng-init="charCnt=0;progressBarType='success'">
+
+        <div class="row">
+            <div class="col-sm-6">
+                <!-- Start of the progress bar -->
+                <uib-progressbar ng-show="charCnt > 3" type="{{progressBarType}}" class="progress-striped active" max="charLimit" value="charCnt"><span style="font-size:0.8em;color:black">{{charCnt}} / {{charLimit}}</span></uib-progressbar>
+                <!-- End of the progress bar -->
+            </div>
+
+            <!--            http://getbootstrap.com/components/#input-groups-->
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input ng-keyup="countChars($event)" type="text" maxlength="{{charLimit}}" class="form-control" placeholder="Enter your text here">
+                    <span class="input-group-addon">Practice limiting your verbosity</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

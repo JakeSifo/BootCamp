@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>React DOM Updates</title>
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+</head>
+
+<body>
+    <h3>The Voting System</h3>
+    <div id="where_to_render">Waiting for the ballot results ...</div>
+    <hr/>
+    <input type=button value=Yes onclick="vote('Yes')" />
+    <input type=button value=No onclick="vote('No')" />
+  <script>
+    
+    var yes = 0;
+    var no = 0;
+    
+    function vote (ballot) {
+
+      if (ballot == 'Yes'){
+        yes++;
+      }
+      
+      if (ballot == 'No'){
+        no++;
+      }
+      
+      var yesMsg = yes + " 'Yes' ballots";
+      var noMsg =  no + " 'No' ballots";
+      
+      var li1 = React.createElement('li', null, yesMsg);
+      var li2 = React.createElement('li', null, noMsg);
+      var ul = React.createElement('ul', null, li1, li2);
+      //var ul = React.DOM.ul(null, li1, li2);
+      var div = React.createElement('div', null, ul);
+      //var div = React.DOM.div(null, ul);
+      
+      ReactDOM.render(div, document.getElementById('where_to_render'));
+    }
+
+
+  </script>
+</body>
+
+</html>

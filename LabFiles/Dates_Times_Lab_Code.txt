@@ -1,0 +1,27 @@
+import datetime as dt
+
+time_now = dt.datetime.now(); time_now
+
+time_now.date() 
+
+time_now.time()
+
+time_delta = dt.timedelta(hours=4, minutes=30)
+time_now + time_delta
+
+time_now.strftime("%A")
+
+time_now.strftime("%a")
+
+datetime_str = '09/19/20 14:55:26'
+
+datetime_object = datetime.strptime(datetime_str, '%m/%d/%y %H:%M:%S')
+datetime_object
+
+
+
+
+
+
+
+

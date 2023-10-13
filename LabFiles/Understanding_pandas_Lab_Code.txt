@@ -1,0 +1,62 @@
+
+
+import numpy as np
+import pandas as pd
+
+np.random.seed(10)
+sales = np.array((100 * np.random.rand (5)).astype(int))
+sales
+
+location = [c for c in 'ABCDE']; location
+
+data_np = np.array([sales, location]);data_np
+
+
+# Should raise an error!
+df = pd.DataFrame(data_np, columns = ["Sales", "Location"])
+
+data_np = np.array([sales, location]).T
+data_np
+
+df = pd.DataFrame(data_np, columns = ["Sales", "Location"])
+df
+
+df.dtypes
+
+df.Sales = df.Sales.astype(int)
+
+df.describe()
+
+df.Location
+
+df.Sales
+
+df.loc[:2, 'Location'] 
+
+df.iloc[-1, :]
+
+df.Sales.sort_values(ascending=False)
+
+df['Month'] = pd.DataFrame(['Jan', 'Feb', 'Mar', 'Apr', 'May']); df
+
+del df['Month']
+
+df1 = df.head(3)
+df2 = df.tail(3)
+df12 = pd.concat([df1, df2])
+df12
+
+df12 = pd.concat([df1, df2], ignore_index=True); df12 
+
+url = 'http://bit.ly/36fGR32'
+df2 = pd.read_csv(url)
+
+df2.head()
+df2.info()       # should return memory usage of 40.1+ KB
+df2.columns    # returns the column index (names)
+df2.index        # returns the row (range) index 
+df2.dtypes
+
+
+
+

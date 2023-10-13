@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JSX Lists</title>
+  </head>
+  <body>
+    <div id="where_to_render">********</div>
+
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script type="text/babel">
+
+        var workItems = ['Start project', 'Work hard', 'Finish project'];
+        
+        function Item(props) {
+          return <li>{props.i}</li>;
+        }
+
+
+        function ProjectSchedule(workItems) {
+          return (
+            <ul>
+              {workItems.map((x) => <Item key={x} i={x} />)}
+            </ul>
+          );
+        }
+
+        var reactElement = 
+          <div>
+            Project Schedule: {ProjectSchedule(workItems)}
+          </div>
+        
+
+        ReactDOM.render(
+          reactElement,
+          document.getElementById('where_to_render')
+        );    
+  
+    </script>
+    
+  </body>
+</html>
+

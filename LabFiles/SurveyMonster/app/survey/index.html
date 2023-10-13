@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script src="/SurveyMonster/bower_components/angular/angular.min.js"></script>
+  <script src="/SurveyMonster/app/survey/survey.js"></script>
+  <script src="/SurveyMonster/app/survey/survey.service.js"></script>
+  <script src="/SurveyMonster/app/survey/survey.controller.js"></script>
+</head>
+<body>
+  <h1>Survey Monster</h1>
+  
+  <div ng-app="Survey" ng-controller="SurveyController as surveyCtrl">
+  <!-- Begin survey -->
+    <div ng-if="!surveyCtrl.submitted">
+      <div>{{surveyCtrl.currentQuestion.title}}</div>
+      <label ng-repeat="answer in surveyCtrl.currentQuestion.answers">
+        <input type="radio" ng-model="surveyCtrl.currentQuestion.selectedAnswer" value="{{answer}}"/>
+        {{answer}}<br/>
+      </label><br/>
+      <button ng-disabled="!surveyCtrl.hasPrev()" ng-click="surveyCtrl.prevQuestion()">Previous</button>
+      <button ng-disabled="!surveyCtrl.hasNext()" ng-click="surveyCtrl.nextQuestion()">Next</button>
+      <button ng-if="!surveyCtrl.hasNext()" ng-click="surveyCtrl.submitSurvey()">Submit</button>
+    </div>
+    <div ng-if="surveyCtrl.submitted">
+      <div ng-repeat="question in surveyCtrl.questions">
+        <h3>{{question.title}}</h3>
+        <p>{{question.selectedAnswer}}</p>
+      </div>
+    </div>
+  <!-- End survey -->
+  </div>
+  
+</body>
+</html>

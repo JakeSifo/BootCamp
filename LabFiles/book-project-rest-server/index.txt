@@ -1,0 +1,97 @@
+var express = require('express');
+var dao = require("./mongo-dao");
+var app = express();
+
+app.use(express.json()); //Parse JSON body
+
+// get books 1
+app.get("/books", (req, res) => {
+  dao.findAllBooks(function(data){
+  	res.send(data)
+  })
+});
+
+// get books 2
+app.get("/books", (req, res) => {
+  dao.findAllBooks((err, books) => {
+    if (books !== undefined) {
+      //We have books
+      console.log("index.js GET all books: " + books );
+      res.send(books);
+    } else {
+      res.statusCode = 500;
+      res.end();
+    }
+  });
+});
+
+// get single book
+app.get("/books/:isbn", (req, res) => {
+  dao.findBook(req.params.isbn, (err, book) => {
+    if (book !== undefined) {
+      //We have book
+      console.log("index.js GET single book: " +  req.params.isbn );
+      res.send(book);
+    } else {
+      res.statusCode = 404;
+      res.end();
+    }
+  });
+});
+
+
+// delete single book
+app.get("/books/:isbn", (req, res) => {
+  dao.deleteBook(req.params.isbn, (err) => {
+    if (err === null) {
+      console.log("index.js DELETE single book: " +  req.params.isbn );
+      res.end();
+    } else {
+      res.statusCode = 404;
+      res.end();
+    }
+  });
+});
+
+// update a book
+app.put("/books/:isbn", (req, res) => {
+  if (req.params.isbn === undefined || req.body === undefined) {
+    res.statusCode = 500;
+    res.end();
+    return;
+  }
+  dao.updateBook(req.params.isbn, req.body, (err) => {
+    if (err === null) {
+      console.log("index.js DELETE single book: " + req.params.isbn );
+      res.end();
+    } else {
+      res.statusCode = 404;
+      res.end();
+    }
+  });
+});
+
+
+// add a book
+app.post("/books", (req, res) => {
+  if ( req.body === undefined) {
+    res.statusCode = 500;
+    res.end();
+    return;
+  }
+  dao.addBook( req.body, (err) => {
+    if (err === null) {
+      console.log("index.js ADD book: " + req.body.isbn );
+      res.end();
+    } else {
+      res.statusCode = 404;
+      res.end();
+    }
+  });
+});
+
+
+// server start-up
+const port = 4000
+console.log("Open a browser to http://localhost:"+port+" to view the application");
+app.listen(port);

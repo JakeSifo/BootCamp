@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>JSX Expressions</title>
+</head>
+
+<body>
+   <h3>Your action:</h3>
+    <div id="where_to_render">********</div>
+    
+  
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+
+  <script>
+    function StockTaker(props) {
+      var itemsInStock = props.itemsInStock;
+      var restock_limit = 2;
+        
+        return (
+          <div>
+            {itemsInStock.length <= restock_limit &&
+            <p>
+              Restock: only {itemsInStock.length} items is left!
+            </p>
+          }
+        </div>
+      );
+    }
+
+    var items = ['Item A', 'Item B', 'Item C'];
+    ReactDOM.render(
+      <StockTaker itemsInStock={items} />,
+      document.getElementById('where_to_render'));
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+

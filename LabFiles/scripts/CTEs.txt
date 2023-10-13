@@ -1,0 +1,27 @@
+
+
+USE LAB_DB;
+USE WAREHOUSE LAB_WH;
+
+SET EMP_ID = 9;
+SELECT $EMP_ID;
+
+SELECT O.ORDER_ID, OD.INVENTORY_ID, O.EMPLOYEE_ID
+    FROM  ORDER_DETAILS OD JOIN  ORDERS O
+    ON OD.ORDER_ID = O.ORDER_ID
+    WHERE O.EMPLOYEE_ID  = $EMP_ID 
+    ORDER BY O.ORDER_DATE;
+
+----------------------------------------------------------------
+WITH cte_view (cte_O_ID, cte_O_DATE)
+  AS (
+        SELECT ORDER_ID, ORDER_DATE FROM ORDERS 
+        WHERE EMPLOYEE_ID  = $EMP_ID 
+    )
+
+  SELECT CW.cte_O_ID, OD.INVENTORY_ID
+      FROM  ORDER_DETAILS OD JOIN  cte_view CW
+      ON OD.ORDER_ID = CW.cte_O_ID
+      ORDER BY CW.cte_O_DATE;
+      
+

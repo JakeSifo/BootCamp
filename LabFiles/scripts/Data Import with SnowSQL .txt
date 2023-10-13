@@ -1,0 +1,19 @@
+
+----- In the SnowSQL Tool 
+USE LAB_DB;
+USE WAREHOUSE LAB_WH;
+TRUNCATE TABLE ORDERS;
+SELECT * FROM ORDERS;
+
+
+
+put file://c:\LabFiles\Orders.csv @~/my_staged_files;
+
+
+list @~/my_staged_files;
+
+
+copy into ORDERS from @~/my_staged_files file_format = (format_name = 'DEFAULT_GZIPPED_CSV');
+
+
+

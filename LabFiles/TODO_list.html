@@ -1,0 +1,42 @@
+<html>
+<head>
+  <title>TODO List :: Using the ng-repeat directive</title>
+    <script src="/js/angular.js"></script>
+<script>
+   angular.module("SimpleApp", [])  
+	   .controller("TODOController", function($scope) {
+         $scope.items = [ {
+            itemName : 'Create a TODO List',
+            itemUrgency : 1
+         } ];
+      
+         $scope.todoLen = $scope.items.length;
+
+         $scope.removeTODOItem = function(index) {
+            $scope.items.splice(index, 1);
+         }
+
+         $scope.addTODOItem = function() {
+            $scope.items.splice($scope.todoLen, 0, {
+               itemName : 'Enter a TODO item',
+               itemUrgency : 2
+            });
+            $scope.todoLen = $scope.items.length;
+         }
+   });
+</script>
+</head>
+<body ng-app='SimpleApp' ng-controller='TODOController' style="width: 400px">
+
+    <h2 style="color: white; background-color: blue;">My TODO List</h2>
+    <p style="font-family: monospace; font-weight: bold; font-size: 1.15em;">[ Description ] [ Urgency ]</p>
+
+    <div ng-repeat='i in items'>
+        <input ng-model='i.itemName'> <input type="number" ng-model='i.itemUrgency' min='1' max='3'>
+        <button ng-click="removeTODOItem($index)">Done !</button>
+    </div>
+    <p style='color: blue;'>Items in the list: {{items.length}}</p>
+    <button ng-click="addTODOItem()">Add a new TODO item</button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Geeker News Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="" rel="stylesheet">
+
+    <!-- Custom style sheet -->
+    <link href="" rel="stylesheet">
+
+    <!-- AngularJS -->
+    <script src=""></script>
+
+    <!-- Angular UI -->
+    <script src=""></script>
+
+    <!-- Application JS -->
+    <script src=""></script>
+</head>
+
+<body ng-app="GeekerNews" ng-controller="NewsController as newsCtrl" ng-cloak>
+
+<div class="container">
+  <div class="row">
+      <div class="col-sm-12 news-header">
+        Geeker News
+      </div>
+  </div>
+  <div class="row news-body">
+      <div class="col-sm-12">
+        <div ng-repeat="item in newsCtrl.newsItems">
+          <p><a href="{{item.url}}">{{$index + 1}}. {{item.title}}</a><br/>
+          <span class="grey-text">{{item.points}} points by {{item.postedBy}} on {{item.postedOn}}</span></p>
+        </div>
+      </div>
+  </div>
+</div>
+
+</body>
+
+</html>

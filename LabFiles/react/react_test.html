@@ -1,0 +1,17 @@
+<script src="js/react.js"></script>
+<script src="js/react-dom.js"></script>
+
+ <script>
+  class HelloMessage extends React.Component {
+    render() {
+      return <div > Hello {
+        this.props.name
+      } < /div>;
+    }
+  }
+
+  ReactDOM.render( < HelloMessage name = "John" /> ,
+    document.getElementById('container')
+  );
+</script>
+HTML HTML HTML ...

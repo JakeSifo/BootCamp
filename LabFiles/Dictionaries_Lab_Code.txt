@@ -1,0 +1,57 @@
+d = { 'key1': 123, 'key2': 456, 'key3': 789 } 
+
+type(d)
+
+len(d)
+
+d['key3']
+
+d['key3'] = -789 
+
+d[999] 
+
+d.get(999, 'N/A')
+
+type(d.keys())
+
+for k in d.keys():
+    print (k, end = ', ')
+    
+for v in d.values():
+    print (v, end = ', ')
+    
+for k,v in d.items():
+    print (f'{k} --> {v}', end = ', ')
+    
+min(d) 
+
+max(d)
+
+min(d.values())
+
+max(d.values())
+
+789 in d.values()
+
+789 in d.keys()
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

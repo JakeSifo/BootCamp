@@ -1,0 +1,84 @@
+
+data_model = [1,2,3,4,5,6]
+
+
+map_loop_result = []
+scale = 10
+for i in data_model:
+    map_loop_result.append ( i * scale)
+
+print (map_loop_result)
+
+map_result_lc = [x * scale for x in data_model]; map_result_lc
+
+list (map (lambda x: x * scale, data_model))
+
+ml = lambda x: x * scale
+list(map (ml, data_model)) 
+
+
+filter_loop_result = []
+for i in data_model:
+    if i % 2 == 0:
+        filter_loop_result.append(i)
+
+print (filter_loop_result)
+
+filter_result_lc = [i for i in data_model if i % 2 == 0]
+filter_result_lc
+
+lada = lambda x: x % 2 == 0
+list (filter(lada, data_model))
+
+list (filter(lambda x: x % 2 == 0, data_model))
+
+sum_elem = 0
+for x in data_model:
+    sum_elem += x
+    
+print (sum_elem) 
+
+from functools import reduce  
+
+reduce(lambda x,y: x + y, data_model)
+
+def rd (x,y):
+    print (x,y)
+    return x + y
+
+reduce(rd, data_model)
+
+
+max_reduce = lambda x,y: x if x > y else y
+reduce(max_reduce, data_model)
+
+min_reduce = lambda x,y: x if x < y else y
+reduce(min_reduce, data_model)
+
+list_of_words = "A quick brownish fox jumps on the lazy dog".split()
+
+sorted_in_place = list_of_words
+sorted_in_place.sort(); sorted_in_place
+
+list_of_words = "A quick brownish fox jumps on the lazy dog".split()
+
+sorted(list_of_words)
+
+sorted (list_of_words, key = lambda w: len(w))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,34 @@
+
+
+CREATE OR REPLACE SEQUENCE seq1;
+
+CREATE OR REPLACE TABLE phoenix (id NUMBER DEFAULT seq1.nextval, message TEXT);
+
+INSERT INTO phoenix VALUES (default, 'First message');
+INSERT INTO phoenix VALUES (default, 'Second message');
+INSERT INTO phoenix VALUES (default, 'Third message');
+INSERT INTO phoenix VALUES (default, 'Fourth message');
+INSERT INTO phoenix VALUES (default, 'Fifth message');
+
+SELECT * FROM phoenix;
+
+
+ALTER SESSION  SET TIMEZONE = 'UTC';
+SELECT getdate();
+
+DELETE FROM phoenix WHERE id <= 3; 
+
+SELECT * FROM phoenix;
+
+SELECT * FROM phoenix at(timestamp => 'COPY YOUR OWN'::timestamp)
+
+CREATE OR REPLACE VIEW v_p AS
+    SELECT * FROM phoenix at(timestamp => 'COPY YOUR OWN'::timestamp)
+
+
+INSERT INTO phoenix 
+  SELECT v.* FROM v_p v WHERE v.ID NOT IN 
+      (SELECT p.id FROM phoenix p);
+      
+      
+      

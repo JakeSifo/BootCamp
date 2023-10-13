@@ -1,0 +1,56 @@
+
+
+##################################################################################
+## When using the Databricks Community Cloud (DCC), make sure you have the 
+## spark.databricks.workspace.matplotlibInline.enabled = true  
+## Spark Config setting for the Cluster
+##################################################################################
+
+%matplotlib inline
+import math
+import random
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+
+
+lag = math.pi / 2.0 
+
+X = [x for x in range(0,20)]
+
+effect = [math.sin(x) for x in X]
+cause = [math.sin(x - lag) for x in X]
+
+random.seed(3)
+rnd  = [random.random() for i in range(len(X))]
+
+input = np.array( [cause, effect, rnd])
+
+df = pd.DataFrame(input.T, columns = ['Cause', 'Effect', "Noise"])
+
+plt.plot(X,df.Cause, c="red", label = 'Cause')
+plt.plot(X, df.Effect, c='green', label = 'Effect')
+plt.plot(X, df.Noise, c="black", label = 'Random')
+plt.legend(loc='upper right')
+
+lag = math.pi / 5.0 
+
+X = [x for x in range(0,20)]
+
+effect = [math.sin(x) for x in X]
+cause = [math.sin(x - lag) for x in X]
+
+random.seed(3)
+rnd  = [random.random() for i in range(len(X))]
+
+input = np.array( [cause, effect, rnd])
+
+df = pd.DataFrame(input.T, columns = ['Cause', 'Effect', "Noise"])
+
+plt.plot(X,df.Cause, c="red", label = 'Cause')
+plt.plot(X, df.Effect, c='green', label = 'Effect')
+plt.plot(X, df.Noise, c="black", label = 'Random')
+plt.legend(loc='upper right')
+
+df.corr()
+

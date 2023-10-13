@@ -1,0 +1,35 @@
+
+
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+import requests
+import json
+
+url = 'https://bit.ly/2yP2mNi'
+
+resp = requests.get(url)
+
+resp.status_code == 200
+
+resp.headers
+
+contacts = resp.json(); contacts[:3]
+
+[(c.get('name', 'Joe Doe'), c.get('company', 'N/A')) for c in contacts]
+
+file_so_save = '/dbfs/saved_contacts.json'
+with open (file_so_save, 'w') as fout:
+    json.dump(contacts, fout)
+
+%fs  ls
+    
+with open (file_so_save) as fin:
+    json_from_file = json.load(fin)
+    
+
+assert json_from_file == contacts, "Make sure they match!"
+
+
+

@@ -1,0 +1,92 @@
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+import pandas as pd
+
+input_file = 'http://bit.ly/36fGR32'
+
+pandf = pd.read_csv(input_file); pandf.head(4)
+
+
+
+df = spark.createDataFrame (pandf)
+
+df.dtypes
+
+
+df.summary().show() 
+
+type(df.summary())
+
+df.summary('count').show()
+
+df.select ('*').show()
+
+df.select('FNAME', 'DAY', 'MONTH').show(5)
+
+df.select(df.FNAME, df.DAY, df.MONTH).show(5)
+
+df.select ('FNAME', 'DAY', 'MONTH')\
+.filter ( (df.MONTH == 'Nov') & (df.DAY == 11)).show(3)
+
+type(df.DAY)
+
+df.select('DAY').collect()
+
+list ( map( lambda r: r.DAY, df.select('DAY').collect()[:5]))
+
+days = [r.DAY for r in df.select('DAY').collect()]; days
+
+sorted(days)[:20]
+
+sorted(days)[-20:]
+
+df.select('DAY').distinct().show(31)
+
+df.select('DAY').distinct().count()
+
+df_max_day = df.groupBy('MONTH').agg({'DAY' : 'max'}); df_max_day.show()
+
+df_min_day = df.groupBy('MONTH').agg({'DAY' : 'min'}); df_min_day.show()
+
+df_join = df_max_day.join(df_min_day, 'MONTH'); df_join.show() 
+
+df_report = df_join.select \
+('MONTH', (df_join['max(DAY)'] - df_join['min(DAY)']).alias('DAYS_DIFF') );\
+df_report.show()
+
+df_report_sorted = df_report.sort(df_report.DAYS_DIFF.desc()) 
+df_report_sorted.show()
+
+dfc = df.groupBy('MONTH').agg({'*' : 'count'});
+dfc.show()
+
+dfr = dfc.withColumnRenamed('count(1)', 'fc')
+dfr_sorted = dfr.sort(dfr.fc.desc()); dfr_sorted.show()
+
+import pyspark.sql.functions as sf
+
+rmin = (df.agg(sf.min(df.FSIZE).alias('mn')).collect()[0])
+df.select('FNAME', 'FSIZE').filter ( df.FSIZE == rmin.mn).show()
+
+import pyspark.sql.functions as sf
+
+rmax = (df.agg(sf.max(df.FSIZE).alias('mx')).collect()[0])
+df.select('FNAME', 'FSIZE').filter ( df.FSIZE == rmax.mx).show()
+
+
+rdd = df.rdd   # get the rdd view of the DataFrame; the rdd object is of type pyspark.rdd.RDD
+min_size = rdd.map(lambda r: r.FSIZE).reduce (lambda x,y: min(x,y))
+rdd.filter(lambda r: r.FSIZE == min_size)
+.map(lambda f: f.FNAME).collect()
+
+
+max_size = rdd.map(lambda r: r.FSIZE).reduce (lambda x,y: max(x,y))
+rdd.filter(lambda r: r.FSIZE == max_size)\
+.map(lambda f: f.FNAME).collect()
+
+df_report_sorted.explain(True)
+
+
+

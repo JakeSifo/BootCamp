@@ -1,0 +1,53 @@
+
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+import os
+
+lab_dir = '/dbfs/lab_dir'
+os.path.exists(lab_dir)
+
+os.mkdir(lab_dir)
+
+%fs ls
+
+os.listdir(lab_dir)
+
+dir (os) 
+
+file_name = 'os_dir.txt'
+full_file_name = os.path.join(lab_dir, file_name); full_file_name
+
+with open (full_file_name, 'w') as fout:
+    for idx, e in enumerate(dir(os)):
+        fout.write (f'{idx}:{e}\n') 
+        
+file_lines = []
+with open (full_file_name, 'r') as fin:
+    for line in fin:
+        file_lines.append(line)
+
+file_lines
+
+file_lines = []
+with open (full_file_name, 'r') as fin:
+    for line in fin:
+        file_lines.append(line.strip())  
+
+file_lines
+
+os_dir_from_file = [e.split(':')[1] for e in file_lines]
+
+os_dir_from_file == dir(os)
+
+os.rmdir (lab_dir)
+
+os.listdir(lab_dir)
+
+import shutil
+shutil.rmtree (lab_dir) 
+
+
+
+

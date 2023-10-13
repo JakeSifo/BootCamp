@@ -1,0 +1,28 @@
+s = { 'Foo', 123, True }; s
+
+s = set (['Foo', 123, True])
+
+for e in s:
+  print (e)
+  
+s.add (99.99); s
+
+len(s)
+
+'Foo' in s
+
+
+s1 = {1,2,3,4,5}
+s2 = {3,4,5,6,7}
+
+s1 & s2
+
+s1 | s2 
+
+s1 ^ s2
+
+
+
+
+
+

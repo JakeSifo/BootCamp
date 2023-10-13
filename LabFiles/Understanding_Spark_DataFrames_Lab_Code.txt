@@ -1,0 +1,65 @@
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+%fs ls cars.csv
+
+import pandas as pd
+input_file = '/dbfs/cars.csv'
+cars = pd.read_csv(input_file)
+
+dbf_file = '/dbfs/FileStore/cars.csv'
+cars.to_csv(dbf_file)
+
+csv_file = '/FileStore/cars.csv'
+df = spark.read.csv(csv_file, header = True)
+
+df.columns
+
+df = df.withColumnRenamed('_c0', 'name')
+
+df.dtypes
+
+df.schema
+
+df.show()
+
+save_file = '/FileStore/cars/'
+df.write.csv(save_file, mode = 'overwrite', header = True)  
+
+%fs ls /FileStore/cars
+
+df2 = spark.read.option("inferSchema", "true") \
+.csv(save_file, header = True)
+
+df_schema = 'car_name string, mpg string, cyl float, disp string, hp string, wt string, qsec string, am string, gear string, carb string'
+
+df3 = spark.read.schema(df_schema).csv(save_file, header = True)
+
+df.collect()
+
+from pyspark.sql import Row
+row1 = Row(name='Mark', performance=47.87, job_category=6)
+row2 = Row(name='Jill', performance=92.99, job_category=7)
+
+dfr = spark.createDataFrame([row1, row2])
+dfr.show()
+
+
+emp_name = ['Mark', 'Jill', 'Gus', 'Mahomet', 'Rob']
+perf = [47.87, 92.99, 56.78,89.62, 82.13]
+job_cat = [6,7,5,7,8]
+
+rows = [Row(name = n, performance = p, job_category = j) \
+        for n, p, j in zip(emp_name, perf, job_cat)]
+
+dfr = spark.createDataFrame(rows)
+dfr.show()
+
+tuples = [(n, p, j) for n, p, j in zip(emp_name, perf, job_cat)]
+dft = spark.createDataFrame \
+(tuples, ['name', 'performance', 'job_category'])
+dft.show()
+
+
+

@@ -1,0 +1,24 @@
+<html>
+<head>
+<title>Expressions</title>
+<script src="/js/angular.js"></script>
+<script>
+   angular.module("SimpleApp", [])  
+	  .controller("ThisController", function($scope) {
+		  $scope.add = function() {
+			 $scope.sum = $scope.op1 + $scope.op2;
+		  }
+	   });
+</script>
+</head>
+<body ng-app='SimpleApp' ng-controller='ThisController' style="width: 400px">
+    <input type="number" ng-model="op1">
+    <input type="number" ng-model="op2">
+    <!--
+    <input type="text" ng-model="op1" size="3">
+    <input type="text" ng-model="op2" size="3">
+    -->
+    <button ng-click="add()">Add Up</button>
+    <div>The sum is: {{sum}}</div>
+</body>
+</html>

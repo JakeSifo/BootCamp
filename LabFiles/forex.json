@@ -1,0 +1,12 @@
+[
+    {"_id" : "AUD", "country" : "Australia",  "currency_name" : "Dollar", "ex_rate_USD" : 0.95},
+    {"_id" : "CAD", "country" :"Canada", "currency_name" : "Dollar", "ex_rate_USD" : 0.99},
+    {"_id" : "CHF", "country" :"Switzerland", "currency_name" : "Franc", "ex_rate_USD" : 1.07},
+    {"_id" : "CNY", "country" : "China",  "currency_name" : "Yuan", "ex_rate_USD" : 0.16},
+    {"_id" : "EUR", "country" : "EU",  "currency_name" : "Euro", "ex_rate_USD" : 1.29},
+    {"_id" : "FRF", "country" : "France",  "currency_name" : "Franc", "ex_rate_USD" : 0.2},
+    {"_id" : "GBP", "country" : "UK",  "currency_name" : "Pound Sterling", "ex_rate_USD" : 1.6 },
+    {"_id" : "INR", "country" : "India",  "currency_name" : "Rupee", "ex_rate_USD" : 0.02},
+    {"_id" : "JPY", "country" : "Japan",  "currency_name" : "Yen", "ex_rate_USD" : 0.01},
+    {"_id" : "USD", "country" : "USA", "currency_name" : "Dollar", "ex_rate_USD" : 1.0}
+]

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Geeker News Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="" rel="stylesheet">
+
+    <!-- Custom style sheet -->
+    <link href="" rel="stylesheet">
+
+    <!-- AngularJS -->
+    <script src=""></script>
+
+    <!-- Angular UI -->
+    <script src=""></script>
+
+    <!-- Application JS -->
+    <script src=""></script>
+</head>
+
+<body ng-app="GeekerNews" ng-cloak>
+
+<div class="container" ng-controller="LoginController as loginCtrl" >
+
+    <form class="form-signin">
+      <h2 class="form-signin-heading">Please sign in</h2>
+      <div class="alert alert-danger" role="alert" ng-if="loginCtrl.error.length > 0">{{loginCtrl.error}}</div>
+      <label for="inputEmail" class="sr-only">Email address</label>
+      <input type="email" ng-model="loginCtrl.email" class="form-control" placeholder="Email address" required autofocus>
+      <label for="inputPassword" class="sr-only">Password</label>
+      <input type="password" ng-model="loginCtrl.password" class="form-control" placeholder="Password" required>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block" type="submit" ng-click="loginCtrl.login()">Sign in</button>
+    </form>
+
+</div>
+
+</body>
+
+</html>

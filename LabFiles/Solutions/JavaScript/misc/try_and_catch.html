@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+
+<head>
+   <title>Try and Catch Demo</title>
+   <script>
+      function try_with_finally() {
+         try {
+            console.log("In the try block ...");
+            throw new Error("Now my new exception");
+         } catch (e) {
+            console.log("...the catch block caught: " + e);
+         } finally {
+            console.log("... ... in the finally block.");
+         }
+
+         console.log("Proceeding with the program flow in try_with_finally () ...");
+      }
+
+      function nested_try() {
+         var tracer = 0;
+         try {
+            tracer++;
+            try {
+               tracer++;
+               eval(" some gibberish ...");
+            } finally {
+               tracer++;
+            }
+         } catch (e) {
+            console.log("...the catch block of the outer try-catch caught: " + e);
+         }
+         console.log("The tracer value: " + tracer);
+      }
+
+      function recursion1() {
+         var t = { "i": 0 };
+         f1(t);
+         console.log("The maximum call stack size = " + t.i);
+      }
+
+      function recursion() {
+         var t = { "i": 0 };
+         try {
+            f1(t);
+         } catch (e) {
+            // console.log(e)
+         } finally {
+            console.log("The maximum call stack size = " + t.i);
+         }
+      }
+
+      function f1(t) { 
+         t.i++; 
+         f2(t) 
+      }
+      function f2(t) { 
+         t.i++;
+         f1(t)  
+      }
+   </script>
+</head>
+
+<body>
+   <input type="button" onclick="try_with_finally()" value="Try and catch (with finally)" />
+   <input type="button" onclick="nested_try()" value="Nested try" />
+   <input type="button" onclick="recursion()" value="Go recursive" />
+</body>
+
+</html>

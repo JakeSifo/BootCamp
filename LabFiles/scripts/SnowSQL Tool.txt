@@ -1,0 +1,35 @@
+SHOW DATABASES;
+
+!help
+
+USE LAB_DB;
+
+USE WAREHOUSE LAB_WH;
+
+SELECT ORDER_ID, COUNT(*) "#items" FROM ORDER_DETAILS GROUP BY ORDER_ID HAVING "#items" > 1 ORDER BY "#items" DESC;
+
+!set variable_substitution=TRUE
+
+!define item_count=2
+
+!variables
+
+SELECT ORDER_ID, COUNT(*) "#items" FROM ORDER_DETAILS GROUP BY ORDER_ID HAVING "#items" > &item_count ORDER BY "#items" DESC;
+
+!spool .\query_output.txt
+
+!spool off
+
+SELECT ORDER_ID, COUNT(*) "#items" FROM ORDER_DETAILS GROUP BY ORDER_ID HAVING "#items" = &item_count;
+
+!source .\remote_query.txt
+
+-- Using SnowSQL in Batch Mode Lab Part
+SELECT ORDER_ID, COUNT(*) "#items" FROM LAB_DB.PUBLIC.ORDER_DETAILS GROUP BY ORDER_ID;
+
+snowsql.exe -f .\remote_query.txt -o output_file=.\results.txt
+
+
+
+
+

@@ -1,0 +1,74 @@
+const mongodb = require("mongodb"); // mongo client library                    
+const url = "mongodb://localhost:27017/bookdb";
+let dbPool; // database connection
+
+mongodb.MongoClient.connect(url, function(err, db) {
+    if (err === null) {
+        dbPool = db; 
+    }else{
+      console.log("DB CONNECTION FAILED. Is database running?");
+    }
+});
+
+// retrieve all books
+module.exports.findAllBooks = function(callback) { 
+  data = 'response from findAllBooks'
+  callback(data) 
+}  
+
+// retrieve all books 2
+module.exports.findAllBooks = function(callback) {
+  var col = dbPool.collection("books");
+  col.find().toArray((err, data) => {
+        callback(data);
+  });
+};
+
+
+// retrieve all books 3
+module.exports.findAllBooks = function(callback) {
+  var col = dbPool.collection("books");
+  col.find()
+    .toArray((err, books) => {
+      if (err === null) {
+        callback(null, books);
+      } else {
+        callback("Failed to find books", undefined);
+      }
+  });
+};
+
+
+
+// retrieve single book
+module.exports.findBook = function(isbn, callback) {
+  var col = dbPool.collection("books");
+  col.find({isbn: isbn})
+    .toArray((err, books) => {
+      if (err === null) {
+        callback(null, books);
+      } else {
+        callback("Failed to find book", undefined);
+      }
+  });
+};
+
+// delete single book
+module.exports.deleteBook = function(isbn, callback) {
+  var col = dbPool.collection("books");
+  col.remove({isbn: isbn})
+    .toArray((err, books) => {
+      if (err === null) {
+        callback(null, '');
+      } else {
+        callback("Failed to delete book", undefined);
+      }
+  });
+};
+
+// update a book
+module.exports.updateBook = function(isbn, book, callback) {
+  delete book._id;
+  var col = dbPool.collection("books");
+  col.update( {isbn: isbn}, {$set: book}, {upsert: true}, callback);
+};

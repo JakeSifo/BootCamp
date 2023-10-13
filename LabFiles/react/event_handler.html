@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Event Handling</title>
+</head>
+
+<body>
+  <div id="where_to_render">*******</div>
+
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+
+  <script>
+
+    function clickEventHandler (e){
+       e.preventDefault();
+      console.log ("Clicked on " + new Date().toLocaleTimeString());
+    } 
+    
+    function App() {
+      return React.createElement(
+        "form",
+        { id: 'frm1', method: 'get', action: '#'},
+
+        React.createElement(
+          "button", {
+            id: "btn1"
+          },
+          "Click Me!"
+        )
+      );
+      }
+
+    ReactDOM.render(React.createElement(App, null), document.getElementById('where_to_render'));
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,29 @@
+<html>
+<head>
+<title>HTTP Object Test</title>
+<script src="/js/angular.js"></script>
+<script>
+   angular.module("SimpleApp", [])  
+	   .controller("HttpController", function($scope, $http) {
+      
+      $scope.connect = function() {
+         $http.get('/labs/data/info.txt').success(function(data, status, headers, config) {
+            $scope.serverData = data;
+         });
+      }
+   });
+</script>
+</head>
+<body ng-app='SimpleApp' ng-controller='HttpController'>
+   <p>
+      Data from the web server: <span style='color: blue'>{{serverData}}</span>
+   </p>
+   <p>
+      HTTP status code: <span style='color: blue'>{{status}}</span>
+   </p>
+   <p>
+      HTTP response headers: <span style='color: blue'>{{httpResponseHeaders}}</span>
+   </p>
+   <button ng-click="connect()">Fetch Data</button>
+</body>
+</html>

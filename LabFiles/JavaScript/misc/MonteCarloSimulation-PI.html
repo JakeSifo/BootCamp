@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Using JavaScript for Approximating the PI number</title>
+<script>
+   var cycles = 100000;
+   var randomNumbersX = [];
+   var randomNumbersY = [];
+
+   function main() {
+      generateRandomNumbers(cycles);
+      calculatePI(cycles);
+   }
+
+   function generateRandomNumbers(loops) {
+      for ( var i = 0; i < loops; i++) {
+         randomNumbersX.push(Math.random());
+         randomNumbersY.push(Math.random());
+      }
+   }
+
+   function getRandomX() {
+      return randomNumbersX.pop();
+   }
+
+   function getRandomY() {
+      return randomNumbersY.pop();
+   }
+
+   function calculatePI(loops) {
+      'use strict'; 
+      var circleDots = 0;
+      x = 0;
+      y = 0;
+      
+      console.time("calculatePI took");
+      for (i = 0; i < loops; i++) {
+         x = getRandomX();
+         y = getRandomY();
+
+         if ((Math.pow(x, 2) + Math.pow(y, 2)) < 1) {
+            circleDots++; 
+         }
+      }
+      console.timeEnd("calculatePI took");
+      console.info("The PI approximated value is:" + 4 * (circleDots / cycles));
+   }
+</script>
+</head>
+<body>
+   <input type="button" onclick="main();" value="Calculate the PI number!" />
+</body>
+</html>

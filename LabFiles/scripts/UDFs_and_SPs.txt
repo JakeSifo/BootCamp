@@ -1,0 +1,86 @@
+
+-- Use for UDFs and Stored Procedures Lab
+
+CREATE OR REPLACE FUNCTION inflation_adjuster (inflation_rate NUMBER)
+RETURNS TABLE (order_id NUMBER, order_total NUMBER)
+AS
+'SELECT ORDER_ID, inflation_rate * SUM (QUANTITY * UNIT_PRICE)
+FROM ORDER_DETAILS    
+    GROUP BY ORDER_ID';
+    
+
+SELECT * FROM TABLE (inflation_adjuster(100));
+
+------------------------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION udf_total_adjuster(order_total DOUBLE, adj_value DOUBLE)
+  RETURNS DOUBLE 
+  LANGUAGE JAVASCRIPT
+  AS ' return (ORDER_TOTAL * ADJ_VALUE);';
+  
+SELECT ORDER_ID, udf_total_adjuster(SUM (QUANTITY * UNIT_PRICE), 1.1)
+FROM ORDER_DETAILS GROUP BY ORDER_ID;
+
+---------------------------------------------------
+CREATE OR REPLACE FUNCTION udf_random()
+  RETURNS DOUBLE --VARCHAR
+  LANGUAGE JAVASCRIPT
+  AS ' return (1.0 + Math.random());';
+  
+  SELECT udf_random();
+  
+SELECT ORDER_ID, udf_random()
+FROM ORDER_DETAILS;
+-----------------------------------------------------------
+
+CREATE OR REPLACE FUNCTION exec_summary(order_total DOUBLE)
+  RETURNS VARCHAR
+  LANGUAGE JAVASCRIPT
+  AS '
+  if (ORDER_TOTAL < 1000.0 )
+    return "Below 1000";
+    
+  if (ORDER_TOTAL < 2000.0 )
+    return "Below 2000";   
+ 
+  return "Over 2000!";   
+  ';
+  
+SELECT ORDER_ID, SUM (QUANTITY * UNIT_PRICE) as "TOTAL", exec_summary(TOTAL) as "EXEC SUMMARY"
+FROM ORDER_DETAILS GROUP BY ORDER_ID; 
+// ============================================================ 
+
+CREATE OR REPLACE PROCEDURE create_table ()
+  RETURNS VARCHAR
+  LANGUAGE JAVASCRIPT
+  AS
+  $$
+    var sql_cmd = "CREATE OR REPLACE TABLE t2 (id NUMBER DEFAULT seq1.nextval, message TEXT);";
+    var stmt = snowflake.execute( { sqlText: sql_cmd } );
+  $$
+  
+CALL create_table();
+ 
+DESCRIBE TABLE LAB_DB.PUBLIC.t2;
+
+-------------------------------------------------------
+CREATE OR REPLACE PROCEDURE sp_test(_msg_ VARCHAR)
+  RETURNS VARCHAR
+  LANGUAGE JAVASCRIPT
+  AS
+  $$
+  var stmt = snowflake.createStatement(
+        {
+         sqlText: "INSERT INTO t2 (message) VALUES (?);",
+         binds:[_MSG_]
+        }
+       );
+   stmt.execute();
+  $$
+  ;  
+ 
+ CALL sp_test('The second message of the day');
+ 
+ SELECT * FROM t2;
+
+

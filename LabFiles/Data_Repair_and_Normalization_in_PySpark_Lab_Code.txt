@@ -1,0 +1,45 @@
+###############################################
+## Use it for Databricks Community Cloud (DCC)  
+###############################################
+
+df_with_nulls = spark.createDataFrame([(None, None), (1.0, None), (float('nan'), 2.0), (11.0, 22.0)], ("A", "B"))
+df_with_nulls.show()
+
+df_with_nulls.dropna(how='all').show()
+
+df_with_nulls.dropna(how='any').show()
+
+from pyspark.sql.functions import col
+df_with_nulls.where(col("A").isNull()).show()
+
+df_with_nulls.na.fill(0).show()
+
+from pyspark.ml.feature import Imputer
+imputer = Imputer(inputCols=["A", "B"], outputCols=["out_a", "out_b"])
+model = imputer.fit(df_with_nulls)  
+df_mean = model.transform(df_with_nulls)  
+df_mean.show()
+
+imputer.setStrategy("mean").fit(df_with_nulls).transform(df_with_nulls)
+
+df_mean = df_mean.select ('out_a', 'out_b')
+
+from pyspark.ml.linalg import Vectors
+from pyspark.ml.linalg import DenseVector
+from pyspark.ml.feature import VectorAssembler
+from pyspark.ml.feature import Normalizer
+from math import *
+
+veca = VectorAssembler(inputCols = ['out_a', 'out_b'], outputCol = 'feature_vector')
+df_feat = veca.transform(df_mean)
+df_feat.show()
+
+normalizer = Normalizer(inputCol="feature_vector", outputCol="features")
+normalizer.transform(df_feat).collect()
+
+df_norm = df_feat.select ('feature_vector')
+
+df_norm.rdd.map(lambda c: 
+c[0][0] / sqrt (pow( c[0][0],2) + pow(c[0][1],2))).collect()
+
+

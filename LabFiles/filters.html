@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Filters</title>
+<script src="/js/angular.js"></script>
+<script>
+   angular.module('AssetsModule', []).
+      factory('Assets', function() {
+         var service = {};
+         
+         service.fetchAssets = function() {
+            return [ 
+               {
+                  assetDescription : 'French Wine Collection',
+                  assetValue : 19900
+               }, {
+                  assetDescription : 'Porsche 911',
+                  assetValue : 150000
+               }, {
+                  assetDescription : 'Learjet',
+                  assetValue : 7000000
+               } 
+            ];
+         };
+      
+         return service;
+      })
+
+      // Controller, the Assets object will be injected by AngularJS
+      .controller("AssetsController", function($scope, Assets) {
+         $scope.assetsList = Assets.fetchAssets();
+   });
+</script>
+</head>
+<body ng-app='AssetsModule' ng-controller='AssetsController' style="width: 400px">
+    <h2>Wish you were here ...</h2>
+    <ol>
+        <li ng-repeat="asset in assetsList">{{asset.assetDescription}} = {{asset.assetValue}}
+    </ol>
+</body>
+</html>

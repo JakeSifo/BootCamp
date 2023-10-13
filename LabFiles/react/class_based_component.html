@@ -1,0 +1,58 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>A Class-Based React Component</title>
+  </head>
+  <body>
+    <div id="where_to_render">********</div>
+
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script type="text/babel">
+    
+      var ReactClassRef = React.createClass({
+        propTypes: {
+            reminderProp: React.PropTypes.string
+        },
+        
+        render: function() {
+          var param = this.props.reminderProp;
+          
+          var suffix = "-th ";
+          if ((param).slice(-1) == "1" && parseInt(param) != 11) {
+            suffix = "-st ";
+          } else if ((param).slice(-1) == "2" && parseInt(param) != 12) {
+            suffix = "-nd ";
+          } else if (param.slice(-1) == "3" && parseInt(param) != 13){
+            suffix = "-rd ";
+          }
+          
+          var article = "a "
+          if (param.charAt(0) == '8' || parseInt(param) == 11 || parseInt(param) == 18) {
+            article = "an ";
+          }
+          
+          var reminderMessage = 'This is ' + article + param + suffix + 'reminder!';
+
+          if (param < 10 ) {
+            return <p>{reminderMessage}</p>;
+          } else {
+            return <p style={{color: 'red'}}>{reminderMessage}</p>;
+          }
+        }
+      });
+      
+      var reminderCount = 1;
+      
+      setInterval(function() {
+        ReactDOM.render(
+          <ReactClassRef reminderProp={"" + reminderCount++} />,
+          document.getElementById('where_to_render')
+        );
+      }, 1000);
+    </script>
+    
+  </body>
+</html>

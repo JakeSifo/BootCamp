@@ -1,0 +1,49 @@
+Order ID	Employee ID	Customer	Order Date	Shipped Date	Ship Via	Ship Name	Ship Address	Ship City	Ship State/Province	Ship ZIP/Postal Code	Ship Country/Region	Shipping Fee	Taxes	Payment Type	Paid Date	Notes	Tax Rate	Tax Status	Status ID
+30	9	Company AA	1/15/2006	1/22/2006	Shipping Company B	Karen Toh	789 27th Street	Las Vegas	NV	99999	USA	200.00	0.00	Check	1/15/2006		0		Closed
+31	3	Company D	1/20/2006	1/22/2006	Shipping Company A	Christina Lee	123 4th Street	New York	NY	99999	USA	5.00	0.00	Credit Card	1/20/2006		0		Closed
+32	4	Company L	1/22/2006	1/22/2006	Shipping Company B	John Edwards	123 12th Street	Las Vegas	NV	99999	USA	5.00	0.00	Credit Card	1/22/2006		0		Closed
+33	6	Company H	1/30/2006	1/31/2006	Shipping Company C	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	50.00	0.00	Credit Card	1/30/2006		0		Closed
+34	9	Company D	2/6/2006	2/7/2006	Shipping Company C	Christina Lee	123 4th Street	New York	NY	99999	USA	4.00	0.00	Check	2/6/2006		0		Closed
+35	3	Company CC	2/10/2006	2/12/2006	Shipping Company B	Soo Jung Lee	789 29th Street	Denver	CO	99999	USA	7.00	0.00	Check	2/10/2006		0		Closed
+36	4	Company C	2/23/2006	2/25/2006	Shipping Company B	Thomas Axen	123 3rd Street	Los Angelas	CA	99999	USA	7.00	0.00	Cash	2/23/2006		0		Closed
+37	8	Company F	3/6/2006	3/9/2006	Shipping Company B	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	12.00	0.00	Credit Card	3/6/2006		0		Closed
+38	9	Company BB	3/10/2006	3/11/2006	Shipping Company C	Amritansh Raghav	789 28th Street	Memphis	TN	99999	USA	10.00	0.00	Check	3/10/2006		0		Closed
+39	3	Company H	3/22/2006	3/24/2006	Shipping Company C	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	5.00	0.00	Check	3/22/2006		0		Closed
+40	4	Company J	3/24/2006	3/24/2006	Shipping Company B	Roland Wacker	123 10th Street	Chicago	IL	99999	USA	9.00	0.00	Credit Card	3/24/2006		0		Closed
+41	1	Company G	3/24/2006			Ming-Yang Xie	123 7th Street	Boise	ID	99999	USA	0.00	0.00				0		New
+42	1	Company J	3/24/2006	4/7/2006	Shipping Company A	Roland Wacker	123 10th Street	Chicago	IL	99999	USA	0.00	0.00				0		Shipped
+43	1	Company K	3/24/2006		Shipping Company C	Peter Krschne	123 11th Street	Miami	FL	99999	USA	0.00	0.00				0		New
+44	1	Company A	3/24/2006			Anna Bedecs	123 1st Street	Seattle	WA	99999	USA	0.00	0.00				0		New
+45	1	Company BB	4/7/2006	4/7/2006	Shipping Company C	Amritansh Raghav	789 28th Street	Memphis	TN	99999	USA	40.00	0.00	Credit Card	4/7/2006		0		Closed
+46	7	Company I	4/5/2006	4/5/2006	Shipping Company A	Sven Mortensen	123 9th Street	Salt Lake City	UT	99999	USA	100.00	0.00	Check	4/5/2006		0		Closed
+47	6	Company F	4/8/2006	4/8/2006	Shipping Company B	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	300.00	0.00	Credit Card	4/8/2006		0		Closed
+48	4	Company H	4/5/2006	4/5/2006	Shipping Company B	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	50.00	0.00	Check	4/5/2006		0		Closed
+50	9	Company Y	4/5/2006	4/5/2006	Shipping Company A	John Rodman	789 25th Street	Chicago	IL	99999	USA	5.00	0.00	Cash	4/5/2006		0		Closed
+51	9	Company Z	4/5/2006	4/5/2006	Shipping Company C	Run Liu	789 26th Street	Miami	FL	99999	USA	60.00	0.00	Credit Card	4/5/2006		0		Closed
+55	1	Company CC	4/5/2006	4/5/2006	Shipping Company B	Soo Jung Lee	789 29th Street	Denver	CO	99999	USA	200.00	0.00	Check	4/5/2006		0		Closed
+56	2	Company F	4/3/2006	4/3/2006	Shipping Company C	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	0.00	0.00	Check	4/3/2006		0		Closed
+57	9	Company AA	4/22/2006	4/22/2006	Shipping Company B	Karen Toh	789 27th Street	Las Vegas	NV	99999	USA	200.00	0.00	Check	4/22/2006		0		New
+58	3	Company D	4/22/2006	4/22/2006	Shipping Company A	Christina Lee	123 4th Street	New York	NY	99999	USA	5.00	0.00	Credit Card	4/22/2006		0		Closed
+59	4	Company L	4/22/2006	4/22/2006	Shipping Company B	John Edwards	123 12th Street	Las Vegas	NV	99999	USA	5.00	0.00	Credit Card	4/22/2006		0		New
+60	6	Company H	4/30/2006	4/30/2006	Shipping Company C	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	50.00	0.00	Credit Card	4/30/2006		0		Closed
+61	9	Company D	4/7/2006	4/7/2006	Shipping Company C	Christina Lee	123 4th Street	New York	NY	99999	USA	4.00	0.00	Check	4/7/2006		0		New
+62	3	Company CC	4/12/2006	4/12/2006	Shipping Company B	Soo Jung Lee	789 29th Street	Denver	CO	99999	USA	7.00	0.00	Check	4/12/2006		0		New
+63	4	Company C	4/25/2006	4/25/2006	Shipping Company B	Thomas Axen	123 3rd Street	Los Angelas	CA	99999	USA	7.00	0.00	Cash	4/25/2006		0		Closed
+64	8	Company F	5/9/2006	5/9/2006	Shipping Company B	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	12.00	0.00	Credit Card	5/9/2006		0		New
+65	9	Company BB	5/11/2006	5/11/2006	Shipping Company C	Amritansh Raghav	789 28th Street	Memphis	TN	99999	USA	10.00	0.00	Check	5/11/2006		0		New
+66	3	Company H	5/24/2006	5/24/2006	Shipping Company C	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	5.00	0.00	Check	5/24/2006		0		New
+67	4	Company J	5/24/2006	5/24/2006	Shipping Company B	Roland Wacker	123 10th Street	Chicago	IL	99999	USA	9.00	0.00	Credit Card	5/24/2006		0		Closed
+68	1	Company G	5/24/2006			Ming-Yang Xie	123 7th Street	Boise	ID	99999	USA	0.00	0.00				0		New
+69	1	Company J	5/24/2006		Shipping Company A	Roland Wacker	123 10th Street	Chicago	IL	99999	USA	0.00	0.00				0		New
+70	1	Company K	5/24/2006		Shipping Company C	Peter Krschne	123 11th Street	Miami	FL	99999	USA	0.00	0.00				0		New
+71	1	Company A	5/24/2006		Shipping Company C	Anna Bedecs	123 1st Street	Seattle	WA	99999	USA	0.00	0.00				0		New
+72	1	Company BB	6/7/2006	6/7/2006	Shipping Company C	Amritansh Raghav	789 28th Street	Memphis	TN	99999	USA	40.00	0.00	Credit Card	6/7/2006		0		Closed
+73	7	Company I	6/5/2006	6/5/2006	Shipping Company A	Sven Mortensen	123 9th Street	Salt Lake City	UT	99999	USA	100.00	0.00	Check	6/5/2006		0		Closed
+74	6	Company F	6/8/2006	6/8/2006	Shipping Company B	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	300.00	0.00	Credit Card	6/8/2006		0		Closed
+75	4	Company H	6/5/2006	6/5/2006	Shipping Company B	Elizabeth Andersen	123 8th Street	Portland	OR	99999	USA	50.00	0.00	Check	6/5/2006		0		Closed
+76	9	Company Y	6/5/2006	6/5/2006	Shipping Company A	John Rodman	789 25th Street	Chicago	IL	99999	USA	5.00	0.00	Cash	6/5/2006		0		Closed
+77	9	Company Z	6/5/2006	6/5/2006	Shipping Company C	Run Liu	789 26th Street	Miami	FL	99999	USA	60.00	0.00	Credit Card	6/5/2006		0		Closed
+78	1	Company CC	6/5/2006	6/5/2006	Shipping Company B	Soo Jung Lee	789 29th Street	Denver	CO	99999	USA	200.00	0.00	Check	6/5/2006		0		Closed
+79	2	Company F	6/23/2006	6/23/2006	Shipping Company C	Francisco Pérez-Olaeta	123 6th Street	Milwaukee	WI	99999	USA	0.00	0.00	Check	6/23/2006		0		Closed
+80	2	Company D	4/25/2006			Christina Lee	123 4th Street	New York	NY	99999	USA	0.00	0.00				0		New
+81	2	Company C	4/25/2006			Thomas Axen	123 3rd Street	Los Angelas	CA	99999	USA	0.00	0.00				0		New

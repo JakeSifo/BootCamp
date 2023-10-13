@@ -1,0 +1,38 @@
+##################################
+for x in range (-2,5,1):
+    print ('\nProcessing number: ',x)
+    if (x < 1) or (x > 3):
+        print ('* I do not see outside my scope: ',x)
+    elif x == 1:
+        print ('* The number was 1')
+    elif x == 2:
+        print ('* The number of 2')
+    else:
+        print ('* The number was 3')
+
+##################################
+
+pizza_pieces = 6
+max_party_size = 3
+
+for people in range(6):
+    print ('\nParty of: ', people)
+    
+    try:
+        
+        if people >  max_party_size:
+            raise Exception(f"The max party size of {max_party_size} been exceeded!")
+            
+        pieces_per_person = pizza_pieces // people  #int(pizza_pieces / people)
+
+    except Exception as e:
+      print('Exception: ', e) 
+
+    else:
+        print ('Everyone gets {} piece(s)'.format(pieces_per_person))
+        
+    finally:
+        print ('Continuing ...')
+
+print ('\nCome again!') 
+##################################

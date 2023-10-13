@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>JSX Expressions</title>
+  </head>
+  <body>
+    <div id="where_to_render">********</div>
+
+    <script src="js/react.js"></script>
+    <script src="js/react-dom.js"></script>
+    <script src="js/browser.min.js"></script>
+    <script type="text/babel">
+
+        var user = {
+            title: 'Ms',
+            lastName: 'Poppins'
+        };
+
+
+        function formatUserName(user) {
+          return user.title + '.' + user.lastName;
+        }
+
+
+        var principal = 10000;
+        var interestPerCent = 10;
+
+        var reactElement = 
+          <h3>
+            Dear {formatUserName(user)}: <p>Your outstanding balance with our bank is: 
+                ${principal + principal * (interestPerCent) / 100}</p>
+          </h3>
+        
+
+        ReactDOM.render(
+          reactElement,
+          document.getElementById('where_to_render')
+        );    
+  
+    </script>
+    
+  </body>
+</html>

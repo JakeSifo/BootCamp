@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en" ng-app="uib.cust.alert">
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../img/favicon.ico" />
+    <title>UI Bootstrap Custom Alert</title>
+
+    <script src="../js/angular.js"></script>
+    <script src="../js/ui-bootstrap-tpls-0.14.3.js"></script>
+<!--     <script src="../js/ui-bootstrap-0.14.3.js"></script> -->
+    <script src="custAlert.js"></script>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+
+</head>
+
+<body class="ng-cloak">
+    <div ng_init="showit=false">
+        <uib-alert dismiss-on-timeout='3000' ng_show="showit" type="danger" close="showit=false">An error occurred somewhere ...</uib-alert>
+        <button type="button" class='btn btn-primary' ng-click="showit=true">Generate an Alert</button>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,73 @@
+def sales_report(year, gross_revenue, sales_channel):
+    '''Award-winning sales report by
+            Acme Inc.'''
+    print (year, gross_revenue, sales_channel)
+    return f'The report for {sales_channel} / {year} published'
+    
+    
+sales_report(2020, 9_999_999, "'on-line'")
+
+help(sales_report)
+
+sales_report(gross_revenue=9_999_999, sales_channel="'on-line'",  year=2020)
+    
+def sales_report2(gross_revenue, year = 2021, sales_channel = "'retail'"):
+    print (year, gross_revenue, sales_channel)
+    return f'The report for {sales_channel} / {year} published'
+    
+sales_report2(111)
+        
+def sales_report3(* p):
+    for i in p:
+        print (i)
+    print (p[0], p[1], p[2])
+    
+def sales_report3(* p):
+    print (type(p))
+    for i in p:
+        print (i)
+    print (p[0], p[1], p[2])
+    
+def sales_report3(* p):
+    for i in p:
+        print (i)     
+        print (locals())
+    print (p[0], p[1], p[2])
+    
+
+def sales_report4(**kw):   # the common name is ** kw - keyword
+    year = kw['year']
+    gross_revenue = kw['gross_revenue']
+    sales_channel = kw.get('sales_channel', "'retail'")
+    print (year, gross_revenue, sales_channel)
+    
+sales_report4(gross_revenue = 0.1, year = 2021, sales_channel = "'on-line'")
+
+def sales_report4(**kw):
+    year = kw['year']
+    gross_revenue = kw['gross_revenue']
+    sales_channel = kw.get('sales_channel', "'retail'")
+    print (year, gross_revenue, sales_channel)
+    return (year,gross_revenue,sales_channel)
+    
+year,gross_revenue,sales_channel = sales_report4(gross_revenue = 0.1, year = 2021, sales_channel = "'on-line'")
+
+globals() == locals()
+
+n = 5
+n_fact = 1
+for x in range(1,n + 1):
+     n_fact *= x   # a short-hand for n_fact = n_fact * x
+print (n_fact) 
+
+def fact (n):
+    if n == 1:
+        return 1
+    return n * fact (n -1)
+
+fact(5)
+                    
+    
+    
+    
+    

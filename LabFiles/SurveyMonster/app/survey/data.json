@@ -1,0 +1,20 @@
+[
+  {
+    "title": "Who is your favorite superhero?",
+    "answers": [
+      "Batman", "Spiderman", "Superman"
+    ]
+  },
+  {
+    "title": "Who is your most beloved Spiderman villain?",
+    "answers": [
+      "Vulture", "Mysterio", "Rhino", "Hobgoblin"
+    ]
+  },
+  {
+    "title": "What is the least useful tool in Batmans belt?",
+    "answers": [
+      "Batarangs", "Grapple gun", "Sonic devastator", "Disruptor"
+    ]
+  }
+]

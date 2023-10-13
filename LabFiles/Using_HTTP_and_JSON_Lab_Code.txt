@@ -1,0 +1,38 @@
+
+###############################################
+## Use it for Windows (R) class deployments
+###############################################
+
+python -m http.server 9090
+
+http://localhost:9090/contacts.json
+
+import requests
+import json
+
+url = 'http://localhost:9090/contacts.json'
+
+resp = requests.get(url)
+
+resp.status_code == 200
+
+resp.headers
+
+contacts = resp.json(); contacts[:3]
+
+[(c.get('name', 'Joe Doe'), c.get('company', 'N/A')) for c in contacts]
+
+file_so_save = 'saved_contacts.json'
+with open (file_so_save, 'w') as fout:
+    json.dump(contacts, fout)
+    
+with open (file_so_save) as fin:
+    json_from_file = json.load(fin)
+    
+
+assert json_from_file == contacts, "Make sure they match!"
+
+import http.server
+?http.server
+
+

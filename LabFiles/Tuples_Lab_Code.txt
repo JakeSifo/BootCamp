@@ -1,0 +1,26 @@
+
+item = (1234, 'Item 1', True )
+
+item = 1234, 'Item 1', True 
+
+len(item)
+
+item[-1]
+
+item[-1] = False
+
+item.count(1234)
+
+item.index(True)
+
+t_1 = 3,
+
+3 in t_1
+
+iid, name, available = item 
+
+iid, _, _ = item 
+
+
+
+

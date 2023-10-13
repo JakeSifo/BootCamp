@@ -1,0 +1,60 @@
+
+##################################################################################
+## When using the Databricks Community Cloud (DCC), make sure you have the 
+## spark.databricks.workspace.matplotlibInline.enabled = true  
+## Spark Config setting for the Cluster
+##################################################################################
+
+import pandas as pd
+
+%matplotlib inline
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+!wget http://bit.ly/36je2mw -O /dbfs/cars.csv
+
+%fs ls
+
+input_file = '/dbfs/cars.csv'
+cars = pd.read_csv(input_file)
+
+cars.index 
+
+cars.info()
+
+cars.shape
+
+sns.set()
+sns.set_style('whitegrid') 
+
+sns.distplot (cars.hp)
+
+sns.jointplot(x="hp", y="wt", data=cars, kind="kde")
+
+sns.boxplot(cars.qsec, orient='v', palette='summer')
+
+cars[cars.qsec > 22]
+
+sns.catplot(x='gear', y = 'mpg', data = cars)
+
+sns.catplot(x='gear', y = 'mpg', data = cars, hue = 'cyl') 
+
+sns.catplot(x='gear', y = 'mpg', kind='box', data = cars)
+
+sns.catplot(x='cyl', y = 'qsec', data = cars)  
+
+columns = ['hp', 'wt', 'mpg', 'cyl', 'disp', 'qsec']
+df2 = cars [columns].copy() 
+
+sns.pairplot(df2)    
+
+sns.pairplot(df2, hue='cyl') 
+
+# Solution S1
+set(cars.columns) - set(df2.columns)
+
+sns.heatmap(df2.corr())
+
+
+
+

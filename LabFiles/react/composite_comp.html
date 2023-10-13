@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Composite Components App</title>
+</head>
+
+<body>
+  <div id="where_to_render">*******</div>
+  <button type=button onclick="renderComps()">Render Composite Component!</button>
+    
+  <script src="js/react.js"></script>
+  <script src="js/react-dom.js"></script>
+
+  <script>
+    function SubCompCarrot(props) {
+      return <h4>{props.goodMsg}</h4>;
+    }
+
+    function SubCompStick(props) {
+      return <h4>{props.badMsg}</h4>;
+    }
+
+    function MainCompositeComponent() {
+      return (
+        <div>
+          <SubCompCarrot goodMsg="More perks" />
+          <SubCompCarrot goodMsg="Flex time" />
+          <SubCompStick badMsg="No bonuses" />
+        </div>
+      );
+    }
+
+    ReactDOM.render(
+      <MainCompositeComponent />,
+      document.getElementById('where_to_render')
+    );
+  </script>
+</body>
+</html>

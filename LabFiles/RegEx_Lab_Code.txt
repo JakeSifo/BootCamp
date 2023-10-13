@@ -1,0 +1,59 @@
+
+
+###############################################
+## Use it for Windows (R) class deployments
+###############################################
+
+import re
+import random
+
+text_file = 'c:/LabFiles/lorem_ipsum.txt'
+text = None
+with open (text_file, 'r') as fin:
+    text = fin.read()
+
+text
+
+
+re_n = r'\n'
+target = ' Frankie ' # note the spaces: one before and one after
+text_without_n = re.sub(re_n,target, text); text_without_n
+
+
+num_phones = 50
+list_of_phones = []
+random.seed(905)
+for p in range(num_phones):
+    phone_number = f'{random.randint(111,999)}-{random.randint(100,999)}-{random.randint(1000,9999)}'
+
+    list_of_phones.append (phone_number)
+    
+
+list_of_words = [t.strip('.,?!') for t in text_without_n.split(' ')]; 
+
+random.seed(7)
+len_low = len(list_of_words)
+for p in list_of_phones:
+    list_of_words.insert(random.randint(0, len_low-1), p)
+    
+    
+text_to_search_for_phones = " ".join(list_of_words); text_to_search_for_phones
+
+target = target.strip() # Remove spaces around Frankie's name
+target_with_phone_re = f'\S+\s+\S+\s+{target}\s+\S+\s+\S+' 
+target_with_phone_list = re.findall(target_with_phone_re, text_to_search_for_phones); target_with_phone_list
+
+phone_pattern = re.compile(r'(\d{3})-(\d{3})-(\d{4})')
+for x in target_with_phone_list:
+    search = phone_pattern.search(x)
+    if search:
+        match = search.groups()
+        print (match)   # tuples
+        print (match[0])  # area code
+        
+        
+    
+
+
+
+
